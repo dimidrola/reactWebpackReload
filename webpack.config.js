@@ -2,40 +2,36 @@
 var path = require('path');
 var webpack = require('webpack');
 const config = {
-  entry: [
-  'babel-polyfill',
-  'react-hot-loader/patch',
-  './src/app.js'],
+	entry: [
+	'react-hot-loader/patch',
+		'webpack-hot-middleware/client',
+		'babel-polyfill',
+		'./src/app'],
   
-  output: {
-    filename: 'boundle.js',
-    path: path.join(__dirname, 'dist'),
-	publicPath: '/static/'
-  },
-  
-  watch: true,
+	output: {
+		filename: 'boundle.js',
+		path: path.join(__dirname, 'dist'),
+		publicPath: '/static/'
+	},
 
 	module: {
 		rules: [
-		{
-			test: /\.jsx?$/,
-			exclude: /(node_modules|bower_components)/,
-			use: [
-			{ 
-				loader: 'react-hot-loader/webpack' 
-			},
 			{
-				loader: 'babel-loader',
-				options: {
-					presets: ["react"]
-				}
+				test: /\.jsx?$/,
+				exclude: /(node_modules|bower_components)/,
+				
+				use: [
+					{loader: 'react-hot-loader/webpack'},
+					{loader: 'babel-loader'}
+
+				]
 			}
-			]
-	    }
-	  ]
+		],
+
+
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+	    new webpack.HotModuleReplacementPlugin(),
 	]
 };
 module.exports = config;
