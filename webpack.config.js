@@ -1,11 +1,12 @@
 
 var path = require('path');
 var webpack = require('webpack');
+
 const config = {
 	entry: [
-	'react-hot-loader/patch',
-		'webpack-hot-middleware/client',
 		'babel-polyfill',
+		'webpack-hot-middleware/client',
+		'react-hot-loader/patch',
 		'./src/app'],
   
 	output: {
@@ -25,13 +26,22 @@ const config = {
 					{loader: 'babel-loader'}
 
 				]
-			}
+			},
+			{
+				test: /\.jsx?$/,
+				loader: 'eslint-loader',
+				include: path.resolve(process.cwd(), 'src'),
+				enforce: 'pre',
+				options: {
+					fix: true,
+				},
+			},
 		],
 
 
 	},
 	plugins: [
-	    new webpack.HotModuleReplacementPlugin(),
+		new webpack.HotModuleReplacementPlugin()
 	]
 };
 module.exports = config;

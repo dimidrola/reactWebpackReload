@@ -1,26 +1,26 @@
 import React from 'react'
 import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import configureStore from './store/configureStore'
 import { AppContainer } from 'react-hot-loader'
 
 import App from './containers/App'
 
-render(
-  <AppContainer>
-    <App/>
-  </AppContainer>,
-  document.getElementById('root')
-)
+const store = configureStore();
 
-// Hot Module Replacement API
-console.log(module)
-if (module.hot) {
-  module.hot.accept('./containers/App', () => {
-    const NextApp = require('./containers/App').default;
+const _render = Component => {
     render(
-      <AppContainer>
-        <NextApp/>
-      </AppContainer>,
-      document.getElementById('root')
-    );
-  });
+        <AppContainer>
+            <Provider store={store}>
+                <Component />
+            </Provider>
+        </AppContainer>,
+        document.getElementById('root')
+    )
+}
+
+_render(App);
+
+if (module.hot) {
+    module.hot.accept('./containers/App', () => { _render(App) })
 }
