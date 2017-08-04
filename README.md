@@ -1,2 +1,2 @@
-# reactWebpackReload
-react project with server webpack@3 build and hot reloading
+# React app starter
+react+redux starter with  webpack@3, server build and hot reloading
