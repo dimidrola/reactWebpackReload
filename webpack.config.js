@@ -2,6 +2,7 @@
 var path = require('path');
 var webpack = require('webpack');
 
+
 const config = {
 	entry: [
 		'babel-polyfill',
@@ -36,6 +37,16 @@ const config = {
 					fix: true,
 				},
 			},
+			{
+				test: /\.scss$/,
+				use: [{
+					loader: "style-loader"
+				}, {
+					loader: "css-loader"
+				}, {
+					loader: "sass-loader"
+				}]
+			}
 		],
 
 

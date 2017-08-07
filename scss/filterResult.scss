@@ -1,0 +1,20 @@
+.result{
+  padding: 0 20px;
+  display:flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  &-sdk{
+    flex:none;
+    width:50%;
+    font-size: 22px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    &_tag{
+      font-size: 18px;
+
+      color: #7e7e7e;
+    }
+  }
+}

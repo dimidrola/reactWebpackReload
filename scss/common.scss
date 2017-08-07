@@ -1,0 +1,38 @@
+html,body{
+  margin: 0;
+  padding: 0;
+  height:100%;
+}
+*{
+  position:relative;
+}
+ul{
+  margin: 0;
+  padding: 0;
+  li{
+    list-style-type: none;
+  }
+}
+#root{
+  height:100%;
+  max-height:100%;
+  overflow: hidden;
+}
+.filter{
+  display:flex;
+  font-family: Arial;
+  height:100%;
+  overflow: hidden;
+  &-group{
+    padding: 20px;
+    flex:none;
+    width:30%;
+    min-width:200px;
+    overflow-y: scroll;
+  }
+  &-result{
+    padding: 20px;
+    flex:1;
+    overflow-y: scroll;
+  }
+}
